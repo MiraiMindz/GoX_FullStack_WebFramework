@@ -1,5 +1,5 @@
-//go:build amd64
-// +build amd64
+//go:build amd64 && !wasm
+// +build amd64,!wasm
 
 package main
 
@@ -7,6 +7,6 @@ import (
 	"fmt"
 )
 
-func AnyFunction() {
+func AnyF() {
 	fmt.Println("Test 4")
 }

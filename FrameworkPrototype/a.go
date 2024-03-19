@@ -1,5 +1,5 @@
-//go:build wasm
-// +build wasm
+//go:build wasm && !amd64
+// +build wasm,!amd64
 
 package main
 
