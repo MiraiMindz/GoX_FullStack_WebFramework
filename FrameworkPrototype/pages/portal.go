@@ -4,12 +4,16 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
 )
 
+var number int
+
 func PortalPage(c echo.Context) error {
-	return c.Render(http.StatusOK, "portal", template.HTML("<p>this is being rendered on the server</p>"))
+	number++
+	return c.Render(http.StatusOK, "portal", template.HTML(fmt.Sprintf("<p>this is being rendered on the server %d</p>", number)))
 }

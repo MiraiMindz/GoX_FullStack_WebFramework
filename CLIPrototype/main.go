@@ -24,27 +24,23 @@ func main() {
 	// Define the directory containing Go source files
 	var filesObjects []FileObject
 
-	// List all files in the directory
-	files, err := os.ReadDir(SOURCE_DIR)
-	if err != nil {
-		fmt.Println("Error reading directory:", err)
-		return
-	}
-
-	// Iterate over each file
-	for _, fileInfo := range files {
-		var fileTags []string
-		// Check if it's a Go source file
-		if !strings.HasSuffix(fileInfo.Name(), ".go") {
-			continue
+	err := filepath.Walk(SOURCE_DIR, func(path string, fileInfo os.FileInfo, err error) error {
+		if err != nil {
+			return err
 		}
+		if fileInfo.IsDir() {
+			return nil // Skip directories
+		}
+		if !strings.HasSuffix(fileInfo.Name(), ".go") {
+			return nil // Skip non-Go files
+		}
+		var fileTags []string
 
 		// Read the file
-		filePath := SOURCE_DIR + "/" + fileInfo.Name()
-		src, err := os.ReadFile(filePath)
+		//filePath := SOURCE_DIR + "/" + fileInfo.Name()
+		src, err := os.ReadFile(path)
 		if err != nil {
 			fmt.Println("Error reading file:", err)
-			continue
 		}
 
 		// Parse the source file
@@ -52,7 +48,6 @@ func main() {
 		file, err := parser.ParseFile(fset, fileInfo.Name(), src, parser.ParseComments)
 		if err != nil {
 			fmt.Println("Error parsing file:", err)
-			continue
 		}
 
 		// Check the build tags in the file comments
@@ -71,7 +66,7 @@ func main() {
 		}
 
 		processedFileTags := removeDuplicates(fileTags)
-		p, err := filepath.Abs(filePath)
+		p, err := filepath.Abs(path)
 		if err != nil {
 			panic(err)
 		}
@@ -82,6 +77,15 @@ func main() {
 			fobj := FileObject{path: p, archtecture: "amd64"}
 			filesObjects = append(filesObjects, fobj)
 		}
+
+		return nil
+
+	})
+
+	// List all files in the directory
+
+	if err != nil {
+		panic(err)
 	}
 
 	for _, fl := range filesObjects {

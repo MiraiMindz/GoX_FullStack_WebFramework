@@ -9,6 +9,8 @@ import (
 	"io"
 
 	"github.com/labstack/echo/v4"
+
+	"GoFullstackFrameworkPrototype/views"
 )
 
 type Template struct {
