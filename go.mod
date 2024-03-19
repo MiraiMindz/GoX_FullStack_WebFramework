@@ -1,4 +1,3 @@
 module GoFullstackFrameworkPrototype
 
-go 
-
+go 1.22

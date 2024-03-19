@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
-goimports -w ../*/*.go
-go vet ../...
-go run $1
+air="$HOME/lib/go/bin/air"
+
+clear
+goimports -w ./*.go
+go vet .
+if [[ -f $air ]]; then
+    $air
+else
+    go run "$(pwd)/main.go"
+fi
