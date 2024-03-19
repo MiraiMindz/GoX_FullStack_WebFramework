@@ -10,7 +10,7 @@ import (
 
 	"github.com/labstack/echo/v4"
 
-	"GoFullstackFrameworkPrototype/views"
+	"pages"
 )
 
 type Template struct {
@@ -34,7 +34,7 @@ func main() {
 	e.File("/", "public/index.html")
 	e.Static("/static", "assets")
 
-	e.GET("/portal", PortalPage)
+	e.GET("/portal", pages.PortalPage)
 
 	err := e.Start(":8080")
 	if err != nil {

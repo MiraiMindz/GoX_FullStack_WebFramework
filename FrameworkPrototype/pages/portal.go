@@ -1,7 +1,7 @@
 //go:build amd64 && !wasm
 // +build amd64,!wasm
 
-package main
+package pages
 
 import (
 	"fmt"
