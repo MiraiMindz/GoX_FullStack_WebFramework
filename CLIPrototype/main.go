@@ -98,6 +98,8 @@ func main() {
 	for k, v := range CategorizedFiles {
 		switch k {
 		case "amd64":
+			os.Setenv("GOARCH", "amd64")
+			os.Setenv("GOOS", "linux")
 			args := []string{"build", "-o", "output"}
 			args = append(args, v...)
 			fmt.Println(args)
