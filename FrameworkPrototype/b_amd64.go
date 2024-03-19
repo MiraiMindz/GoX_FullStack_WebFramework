@@ -8,5 +8,5 @@ import (
 )
 
 func AnyFunction() {
-	fmt.Println("Test 2")
+	fmt.Println("Test 4")
 }
