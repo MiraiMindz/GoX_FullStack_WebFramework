@@ -7,6 +7,6 @@ import (
 	"fmt"
 )
 
-func main() {
+func AnyFunc() {
 	fmt.Println("Test 2")
 }
