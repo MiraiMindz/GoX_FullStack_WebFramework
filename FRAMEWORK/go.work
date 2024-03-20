@@ -1,0 +1,12 @@
+go 1.22
+
+use (
+	.
+	./utils
+	./wasm
+	./wasm/components
+	./wasm/pages
+	./wasm/views
+	./server
+	./internal
+)

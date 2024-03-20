@@ -18,7 +18,8 @@
 # vendor/
 
 # Go workspace file
-go.work
+#go.work
 
 # Air Folders
-tmp/
+#tmp/
+#CLI/tmp
