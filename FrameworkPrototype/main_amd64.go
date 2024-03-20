@@ -11,6 +11,7 @@ import (
 	"github.com/labstack/echo/v4"
 
 	"pages"
+	"third"
 )
 
 type Template struct {
@@ -22,7 +23,7 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 }
 
 func main() {
-	fmt.Println("Test 3")
+	fmt.Println("Test 3", third.Third("SERVER"))
 	t := &Template{
 		templates: template.Must(template.ParseGlob("views/*.html")),
 	}
@@ -32,8 +33,7 @@ func main() {
 	e.Renderer = t
 
 	e.File("/", "public/index.html")
-	e.Static("/static", "assets")
-
+	e.Static("/assets", "static")
 	e.GET("/portal", pages.PortalPage)
 
 	err := e.Start(":8080")
