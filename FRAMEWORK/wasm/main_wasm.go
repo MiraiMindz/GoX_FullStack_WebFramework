@@ -6,21 +6,12 @@ package main
 import (
 	"syscall/js"
 
-	"FRAMEWORK/internal/html"
+	"FRAMEWORK/wasm/pages"
 )
 
 func main() {
 	app := js.Global().Get("document").Call("getElementById", "_INTERNAL_GOX_APP")
 
-	s := html.CreateBareHTMLTemplate("App", `
-<main>
-	<h1>Hello from: {{.First}} and {{.Second}}</h1>
-</main>
-		`, map[string]any{
-		"First":  "Hello",
-		"Second": 12,
-	})
-
-	app.Set("innerHTML", s)
+	app.Set("innerHTML", pages.App())
 
 }
