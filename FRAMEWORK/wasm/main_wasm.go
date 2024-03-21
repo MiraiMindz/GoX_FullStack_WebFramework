@@ -16,10 +16,10 @@ func main() {
 <main>
 	<h1>Hello from: {{.First}} and {{.Second}}</h1>
 </main>
-		`, struct {
-		First  string
-		Second string
-	}{First: "Hello", Second: "World"})
+		`, map[string]any{
+		"First":  "Hello",
+		"Second": 12,
+	})
 
 	app.Set("innerHTML", s)
 
