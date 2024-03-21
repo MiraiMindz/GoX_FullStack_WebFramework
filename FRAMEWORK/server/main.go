@@ -28,7 +28,7 @@ func New() {
 	}
 
 	e.GET("/", Index)
-	e.Static("/assets", "assets")
+	e.Static("/assets", "server/static")
 	err := e.Start(":8080")
 	if err != nil {
 		panic(err)
