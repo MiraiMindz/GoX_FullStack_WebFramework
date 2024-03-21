@@ -9,4 +9,5 @@ use (
 	./wasm/views
 	./server
 	./internal
+	./internal/html
 )

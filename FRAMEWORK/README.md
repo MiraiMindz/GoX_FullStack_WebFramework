@@ -6,10 +6,10 @@ Inspired by JavaScript/TypeScript Frameworks like NextJS, SolidJS, Nuxt, and Rea
 
 The project structure is pretty straightforward:
 
-- `assets/` represents all static files being served to the front.
 - `bin/` the backend compiled binaries folder.
 - `internal/` the internal files of the framework
 - `server/` the backend part of the server (databases, apis, logic)
+- `server/assets/` represents all static files being served to the front.
 - `utils/` the common code between frontend and backend
 - `ẁasm/` your front-end powered by WASM.
 
