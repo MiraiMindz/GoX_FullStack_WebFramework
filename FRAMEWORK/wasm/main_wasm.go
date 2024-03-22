@@ -14,4 +14,5 @@ func main() {
 
 	app.Set("innerHTML", pages.App())
 
+	select {}
 }
